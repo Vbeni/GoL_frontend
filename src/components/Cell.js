@@ -1,8 +1,9 @@
 import React from 'react';
-import './Cell.css'; // if you decide to use a CSS file for styling
-
+import '../App.css';
+//resusable cell component w/isAlive prop
 function Cell({ isAlive }) {
   return (
+    //applies alive or dead class to cell
     <div className={`cell ${isAlive ? "alive" : "dead"}`} />
   );
 }
