@@ -1,7 +1,7 @@
 import React, { useState } from "react"; 
 
 //create pattern function w/ afterSubmit as props to refresh with header submit
-const CreatePattern = ({afterSubmit}) => {
+const CreatePattern = ({afterSubmit, loggedInUser}) => {
   //three state variables 
   const [name, setName] = useState("");
   const [cells, setCells] = useState("");

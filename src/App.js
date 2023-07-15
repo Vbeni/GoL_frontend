@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PatternList from './pages/PatternList';
 import Home from './pages/Home';
 import Header from './components/Header';
-import Login from './components/Users/Login';
 import './App.css';
-// In App.js
+
 
 const App = () => {
   const [showCreate, setShowCreate] = useState(false);
@@ -35,6 +34,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home isLoggedIn={isLoggedIn} onLoginSuccess={handleSuccessfulLogin} onLogoutSuccess={handleSuccessfulLogout} />} />
           <Route path="/patternlist" element={<PatternList refreshKey={refreshKey} />} />
+
         </Routes>
       </div>
     </Router>

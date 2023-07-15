@@ -33,7 +33,7 @@ const EditPattern = ({ pattern, onPatternUpdate }) => {
         onPatternUpdate(data);
       });
   };
-  //form with name and cell fields w/ handle submit on button click 
+  //form with name and cell fields w/ handle submit on
   return (
     <form onSubmit={handleSubmit}>
       <label>
