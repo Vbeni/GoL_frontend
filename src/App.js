@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PatternList from './pages/PatternList';
+import Home from './pages/Home';
 import Header from './components/Header';
 import './App.css';
 
@@ -19,6 +20,7 @@ const App = () => {
       <div className="App">
         <Header showCreate={showCreate} setShowCreate={setShowCreate} onNewPattern={handleNewPattern} />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/patternlist" element={<PatternList refreshKey={refreshKey} />} />
         </Routes>
       </div>

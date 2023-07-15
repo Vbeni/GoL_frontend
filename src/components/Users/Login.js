@@ -1,28 +1,42 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({ onSuccess }) => {
+  const [showForm, setShowForm] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (event) => {
-    event.preventDefault();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    onSuccess();
+  };
 
-    setUsername('');
-    setPassword('');
+  const handleCancel = () => {
+    setShowForm(false);
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <button type="submit">Login</button>
-    </form>
+    <div>
+      {!showForm ? (
+        <button onClick={() => setShowForm(true)}>Login</button>
+      ) : (
+        <form onSubmit={handleLogin}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Submit</button>
+          <button type="button" onClick={handleCancel}>Cancel</button>
+        </form>
+      )}
+    </div>
   );
 };
 
