@@ -74,10 +74,6 @@ input[type="text"] {
   margin-top: 10px;
 }
 
-form {
-  margin-top: 20px;
-}
-
 .row {
   display: flex;
 }
@@ -93,4 +89,74 @@ form {
 
 .dead {
   background-color: #A0A0A0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #404040;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.form-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.home-link, .nav-link {
+  color: #F0F0F0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.home-link:hover, .nav-link:hover {
+  color: #60D9A0;
+}
+
+.button {
+  background-color: #60D9A0;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: #202020;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+input[type="text"] {
+  width: 150px; 
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1px;
+}
+
+form {
+  display: flex;
+  gap: 10px; 
+}
+
+.button:disabled {
+  background-color: #A0A0A0;
+  cursor: not-allowed;
+}
+.home-link, .nav-link {
+  color: #F0F0F0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.home-link:hover, .nav-link:hover {
+  color: #60D9A0;
 }

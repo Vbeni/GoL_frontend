@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+//edit pattern function w/2 props
 const EditPattern = ({ pattern, onPatternUpdate }) => {
+  //use state hook for var name/cells
   const [name, setName] = useState(pattern.name);
   const [cells, setCells] = useState(JSON.stringify(pattern.cells));
 
@@ -17,7 +19,7 @@ const EditPattern = ({ pattern, onPatternUpdate }) => {
       name,
       cells: JSON.parse(cells)
     };
-
+    //edit endpoint 
     fetch(`http://localhost:8000/api/patterns/${pattern.id}/`, {
       method: "PATCH",
       headers: {
@@ -27,10 +29,11 @@ const EditPattern = ({ pattern, onPatternUpdate }) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        //updates data on successful submit 
         onPatternUpdate(data);
       });
   };
-
+  //form with name and cell fields w/ handle submit on button click 
   return (
     <form onSubmit={handleSubmit}>
       <label>
