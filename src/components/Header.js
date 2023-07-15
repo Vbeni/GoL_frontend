@@ -15,11 +15,11 @@ const Header = ({ showCreate, setShowCreate, onNewPattern, loggedInUser }) => {
       </h1>
       <nav className="nav">
       {loggedInUser && <span>Welcome, {loggedInUser}!</span>}
-        {location.pathname !== '/patternlist' &&
+        {loggedInUser && location.pathname !== '/patternlist' &&
           <Link to="/patternlist" className="nav-link">Pattern List</Link>
         }
       </nav>
-      {location.pathname === '/patternlist' &&
+      {loggedInUser && location.pathname === '/patternlist' &&
         <div className="form-container">
           <button onClick={() => setShowCreate(!showCreate)} className="nav-button">Create Pattern</button>
           {showCreate && <CreatePattern afterSubmit={() => {setShowCreate(false); onNewPattern();}} />}
@@ -28,5 +28,6 @@ const Header = ({ showCreate, setShowCreate, onNewPattern, loggedInUser }) => {
     </header>
   );
 };
+
 
 export default Header;

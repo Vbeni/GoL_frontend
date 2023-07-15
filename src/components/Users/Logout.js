@@ -1,12 +1,9 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 
-const Logout = () => {
-  const history = useHistory();
+const Logout = ({ onSuccess }) => {
 
   const handleLogout = () => {
-
-    history.push('/');
+    onSuccess();
   };
 
   return (
