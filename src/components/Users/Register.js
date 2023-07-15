@@ -7,7 +7,30 @@ const Register = ({ onSuccess }) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    onSuccess();
+
+    // Create the user object
+    const user = {
+      username: username,
+      password: password,
+    };
+
+    // Send a POST request to your backend API
+    fetch('http://localhost:8000/register/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Registration successful
+        onSuccess(username);
+      })
+      .catch((error) => {
+        // Handle the error if registration fails
+        console.error(error);
+      });
   };
 
   const handleCancel = () => {

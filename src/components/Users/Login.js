@@ -7,7 +7,29 @@ const Login = ({ onSuccess }) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    onSuccess();
+
+    // Create the credentials object
+    const credentials = {
+      username: username,
+      password: password,
+    };
+
+    fetch('http://localhost:8000/login/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(credentials),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Login successful
+        onSuccess(username);
+      })
+      .catch((error) => {
+        // Handle the error if login fails
+        console.error(error);
+      });
   };
 
   const handleCancel = () => {

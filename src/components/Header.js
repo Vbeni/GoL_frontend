@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import CreatePattern from '../components/Patterns/CreatePattern';
 
 //Header component with 3 props
-const Header = ({ showCreate, setShowCreate, onNewPattern }) => {
+const Header = ({ showCreate, setShowCreate, onNewPattern, loggedInUser }) => {
   //current url to set specific links in header
   const location = useLocation();
 
@@ -14,6 +14,7 @@ const Header = ({ showCreate, setShowCreate, onNewPattern }) => {
         <Link to="/" className="home-link">Game Of Life</Link>
       </h1>
       <nav className="nav">
+      {loggedInUser && <span>Welcome, {loggedInUser}!</span>}
         {location.pathname !== '/patternlist' &&
           <Link to="/patternlist" className="nav-link">Pattern List</Link>
         }
