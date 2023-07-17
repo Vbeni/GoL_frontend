@@ -19,6 +19,10 @@ const EditPattern = ({ pattern, onPatternUpdate }) => {
       name,
       cells: JSON.parse(cells)
     };
+
+    console.log('Pattern before fetch:', pattern); 
+    console.log('Updated pattern:', updatedPattern); 
+
     //edit endpoint 
     fetch(`http://localhost:8000/api/patterns/${pattern.id}/`, {
       method: "PATCH",
@@ -29,11 +33,14 @@ const EditPattern = ({ pattern, onPatternUpdate }) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log('Data from response:', data); // Debugging line
+
         //updates data on successful submit 
         onPatternUpdate(data);
       });
   };
-  //form with name and cell fields w/ handle submit on
+
+  //form with name and cell fields w/ handle submit on button click 
   return (
     <form onSubmit={handleSubmit}>
       <label>

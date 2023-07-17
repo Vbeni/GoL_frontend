@@ -29,5 +29,4 @@ const Header = ({ showCreate, setShowCreate, onNewPattern, loggedInUser }) => {
   );
 };
 
-
 export default Header;

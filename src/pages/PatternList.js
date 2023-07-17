@@ -34,21 +34,21 @@ const PatternList = ({ refreshKey }) => {
       };
 
       
-    return (
+      return (
         <div className="pattern-grid">
-      {patterns.map((pattern) => (
-        <div key={pattern.id}>
-          <h2 onClick={() => setPatternToEdit(pattern)}>{pattern.name}</h2>
-          {patternToEdit === pattern && 
-            <EditPattern pattern={pattern} onPatternUpdate={handlePatternUpdate} />
-          }
-          <DeletePattern patternId={pattern.id} onPatternDelete={handlePatternDelete} />
-          {pattern.cells.map((row, rowIndex) => (
-            <div key={rowIndex} className="row">
-              {row.map((cell, cellIndex) => (
-                <Cell key={cellIndex} isAlive={cell === 1} />
-              ))}
-            </div>
+          {patterns.map((pattern) => (
+            <div key={pattern.id}>
+              <h2 onClick={() => setPatternToEdit(pattern)}>{pattern.name}</h2>
+              {patternToEdit === pattern && 
+                <EditPattern pattern={pattern} onPatternUpdate={handlePatternUpdate} />
+              }
+              <DeletePattern patternId={pattern.id} onPatternDelete={handlePatternDelete} />
+              {pattern.cells.map((row, rowIndex) => (
+                <div key={rowIndex} className="row">
+                  {row.map((cell, cellIndex) => (
+                    <Cell key={cellIndex} isAlive={cell === 1} />
+                  ))}
+                </div>
               ))}
             </div>
           ))}

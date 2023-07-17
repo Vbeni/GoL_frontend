@@ -8,17 +8,11 @@ const Login = ({ onSuccess }) => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const handleLogin = (event) => {
-  event.preventDefault(); 
-
-  // Fake login logic
-  const username = event.target.username.value;
-  localStorage.setItem('username', username);
-
-  // Pass username to parent component
-  onSuccess(username);
-};
-
+    // Prepare credentials
+    const credentials = {
+      username,
+      password,
+    };
 
     fetch('http://localhost:8000/login/', {
       method: 'POST',
