@@ -81,6 +81,8 @@ input[type="text"] {
 .cell {
   width: 20px;
   height: 20px;
+  border: 1px solid black;
+  box-sizing: border-box;
 }
 
 .alive {
@@ -178,4 +180,29 @@ form {
   background-color: #404040;
   margin: 0 10px;
 }
+
+
+.game-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.alive {
+  background-color: #60D9A0;
+}
+
+.dead {
+  background-color: #A0A0A0;
+}
+
 

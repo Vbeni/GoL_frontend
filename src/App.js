@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PatternList from './pages/PatternList';
 import Home from './pages/Home';
 import Header from './components/Header';
+import Game from './pages/Game';
 import './App.css';
 
 
@@ -34,6 +35,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home isLoggedIn={isLoggedIn} onLoginSuccess={handleSuccessfulLogin} onLogoutSuccess={handleSuccessfulLogout} />} />
           <Route path="/patternlist" element={<PatternList refreshKey={refreshKey} />} />
+          <Route path="/game" element={<Game />} />
         </Routes>
       </div>
     </Router>
