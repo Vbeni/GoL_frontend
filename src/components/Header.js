@@ -11,13 +11,14 @@ const Header = ({ showCreate, setShowCreate, onNewPattern, loggedInUser }) => {
   return (
     <header className="header">
       <h1>
-        <Link to="/game" className="home-link">Game Of Life</Link>
+        <Link to="/" className="home-link">Game Of Life</Link>
       </h1>
       <nav className="nav">
       {loggedInUser && <span>Welcome, {loggedInUser}!</span>}
         {loggedInUser && location.pathname !== '/patternlist' &&
           <Link to="/patternlist" className="nav-link">Pattern List</Link>
         }
+        <Link to="/game" className="nav-link">Play Game</Link>
       </nav>
       {loggedInUser && location.pathname === '/patternlist' &&
         <div className="form-container">

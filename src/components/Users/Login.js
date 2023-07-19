@@ -8,10 +8,10 @@ const Login = ({ onSuccess }) => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Prepare credentials
+    // Create the credentials object
     const credentials = {
-      username,
-      password,
+      username: username,
+      password: password,
     };
 
     fetch('http://localhost:8000/login/', {

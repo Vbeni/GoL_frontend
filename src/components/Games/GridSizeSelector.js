@@ -4,23 +4,34 @@ import '../../styles/GridSizeSelector.css'
 const GridSizeSelector = ({ onSizeChange }) => {
     const predefinedSizes = [25, 50, 75, 100];
     const [customSize, setCustomSize] = useState(25);
+    const [errorMsg, setErrorMsg] = useState('');
 
     const handleDropdownChange = (e) => {
         const size = parseInt(e.target.value, 10);
         onSizeChange(size);
+        setErrorMsg('');  
     };
 
     const handleInputChange = (e) => {
         let inputSize = parseInt(e.target.value, 10);
-        // handle NaN case if the input is emptied
         if (isNaN(inputSize)) {
             inputSize = 0;
         }
+
+        if (inputSize > 100) {
+            setErrorMsg('Please select a size smaller than 100');
+        } else {
+            setErrorMsg('');  
+        }
+
         setCustomSize(inputSize);
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSizeChange(customSize);
+        if (customSize <= 100) {
+            onSizeChange(customSize);
+        }
     };
 
     return (
@@ -43,6 +54,7 @@ const GridSizeSelector = ({ onSizeChange }) => {
                 <input type="number" value={customSize} onChange={handleInputChange} />
             </label>
             <button onClick={handleSubmit}>Apply</button>
+            {errorMsg && <p className="error-message">{errorMsg}</p>} 
         </div>
     );
 };
