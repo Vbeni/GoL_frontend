@@ -4,6 +4,7 @@ import PatternList from './pages/PatternList';
 import Home from './pages/Home';
 import Header from './components/Header';
 import Game from './pages/Game';
+import Footer from './components/Footer';
 import './App.css';
 
 
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/patternlist" element={<PatternList refreshKey={refreshKey} />} />
           <Route path="/game" element={<Game />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
