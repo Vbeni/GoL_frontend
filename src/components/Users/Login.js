@@ -14,7 +14,7 @@ const Login = ({ onSuccess }) => {
       password: password,
     };
 
-    fetch('http://localhost:8000/login/', {
+    fetch('https://game-of-life-fnvg.onrender.com/login/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
