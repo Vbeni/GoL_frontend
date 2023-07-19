@@ -34,9 +34,9 @@ const App = () => {
       <div className="App">
         <Header showCreate={showCreate} setShowCreate={setShowCreate} onNewPattern={handleNewPattern} loggedInUser={loggedInUser}/>
         <Routes>
-          <Route path="/" element={<Home isLoggedIn={isLoggedIn} onLoginSuccess={handleSuccessfulLogin} onLogoutSuccess={handleSuccessfulLogout} />} />
+          <Route path="/home" element={<Home isLoggedIn={isLoggedIn} onLoginSuccess={handleSuccessfulLogin} onLogoutSuccess={handleSuccessfulLogout} />} />
           <Route path="/patternlist" element={<PatternList refreshKey={refreshKey} />} />
-          <Route path="/game" element={<Game loggedInUser={loggedInUser} />} />
+          <Route path="/" element={<Game loggedInUser={loggedInUser} />} />
         </Routes>
         <Footer />
       </div>
