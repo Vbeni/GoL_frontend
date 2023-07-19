@@ -11,7 +11,7 @@ const CreatePattern = ({afterSubmit, loggedInUser}) => {
     event.preventDefault();
     setFormSubmit(true);
     //POST request endpoint 
-    fetch("http://localhost:8000/api/patterns/", {
+    fetch("https://game-of-life-fnvg.onrender.com/api/patterns/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

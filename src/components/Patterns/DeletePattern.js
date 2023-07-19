@@ -5,7 +5,7 @@ const DeletePattern = ({ patternId, onPatternDelete }) => {
     //handledelete function 
     const handleDelete = () => {
         //delete request endpoint 
-        fetch(`http://localhost:8000/api/patterns/${patternId}/`, {
+        fetch(`https://game-of-life-fnvg.onrender.com/api/patterns/${patternId}/`, {
             method: 'DELETE'
         })
         .then(() => {

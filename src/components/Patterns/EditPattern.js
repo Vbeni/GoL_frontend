@@ -24,7 +24,7 @@ const EditPattern = ({ pattern, onPatternUpdate }) => {
     console.log('Updated pattern:', updatedPattern); 
 
     //edit endpoint 
-    fetch(`http://localhost:8000/api/patterns/${pattern.id}/`, {
+    fetch(`https://game-of-life-fnvg.onrender.comapi/patterns/${pattern.id}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

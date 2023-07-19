@@ -11,7 +11,7 @@ const PatternList = ({ refreshKey }) => {
     
     //fetch patterns from api when refresh key or component mounts 
     useEffect(() => {
-        fetch('http://localhost:8000/api/patterns/')
+        fetch('https://game-of-life-fnvg.onrender.com/api/patterns/')
             .then(response => response.json())
             .then(data => {
               //data retrived and then stored in set patterns
