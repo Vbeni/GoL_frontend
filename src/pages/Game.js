@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Cell from '../components/Cell';
 import GameControls from '../components/Games/GameControls';
+import GameRules from '../components/Games/GameRules';
 import '../App.css';
 
 //size prop for default grid size 
@@ -62,6 +63,7 @@ const Game = ({ size = 25 }) => {
 
   return (
     <div className="game-grid">
+      <GameRules />
       {grid.map((row, rowIndex) => (
         <div key={rowIndex} className="row">
           {row.map((cell, cellIndex) => (
