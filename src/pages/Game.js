@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Cell from '../components/Cell';
 import GameControls from '../components/Games/GameControls';
 import GameRules from '../components/Games/GameRules';
 import GameStatus from '../components/Games/GameStatus';
 import GridSizeSelector from '../components/Games/GridSizeSelector';
+import GameGrid from '../components/Games/GameGrid';
 import '../App.css';
 
-const Game = ({ loggedInUser }) => {
+const Game = () => {
     // STATES
     const [size, setSize] = useState(25);
     const [grid, setGrid] = useState([]);
@@ -78,18 +78,7 @@ const Game = ({ loggedInUser }) => {
             />
             <div className="game-grid">
                 <GameRules />
-                {grid.map((row, rowIndex) => (
-                    <div key={rowIndex} className="row">
-                        {row.map((cell, cellIndex) => (
-                            <Cell 
-                                key={cellIndex} 
-                                isAlive={cell} 
-                                onClick={() => handleCellClick(rowIndex, cellIndex)} 
-                                cellSize={cellSize}
-                            />
-                        ))}
-                    </div>
-                ))}
+                <GameGrid grid={grid} handleCellClick={handleCellClick} cellSize={cellSize} />
                 <div className="game-controls">
                     <GridSizeSelector 
                         onSizeChange={(newSize) => {
