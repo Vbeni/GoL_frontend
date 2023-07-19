@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Cell from '../components/Cell';
 import GameControls from '../components/Games/GameControls';
 import GameRules from '../components/Games/GameRules';
+import GameStatus from '../components/Games/GameStatus';
 import '../App.css';
 
 //size prop for default grid size 
@@ -15,7 +16,7 @@ const Game = ({ size = 25 }) => {
   const [grid, setGrid] = useState(generateEmptyGrid);
 //State to track game status 
   const [isRunning, setIsRunning] = useState(false);
-
+  const [generationsCount, setGenerationsCount] = useState(0);
 //Toggle cell state (alive or dead) on click 
   const handleCellClick = useCallback((i, j) => {
     setGrid(grid => grid.map((row, x) => row.map((cell, y) => x === i && y === j ? !cell : cell)));
@@ -30,6 +31,7 @@ const Game = ({ size = 25 }) => {
   const handleClear = useCallback(() => {
     setIsRunning(false);
     setGrid(generateEmptyGrid());
+    setGenerationsCount(0);
   }, [generateEmptyGrid]);
 
 //function stored in memory not recreated every render, only recreated if size changes 
@@ -57,11 +59,20 @@ const Game = ({ size = 25 }) => {
     if (!isRunning) return;
     const interval = setInterval(() => {
       setGrid(computeNextGrid);
+      setGenerationsCount(prevCount => prevCount + 1);
     }, 700);
     return () => clearInterval(interval);
   }, [isRunning, computeNextGrid]);
 
+  const livingCellsCount = grid.flat().filter(cell => cell).length;
+
   return (
+    <>
+    <GameStatus 
+            isRunning={isRunning} 
+            livingCellsCount={livingCellsCount}
+            generationsCount={generationsCount}
+        />
     <div className="game-grid">
       <GameRules />
       {grid.map((row, rowIndex) => (
@@ -81,6 +92,7 @@ const Game = ({ size = 25 }) => {
         onClear={handleClear} 
       />
     </div>
+    </>
   );
 }
 
