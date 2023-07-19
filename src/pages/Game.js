@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import GameControls from '../components/Games/GameControls';
+import GameControlPanel from '../components/Games/GameControlPanel';
 import GameRules from '../components/Games/GameRules';
 import GameStatus from '../components/Games/GameStatus';
-import GridSizeSelector from '../components/Games/GridSizeSelector';
 import GameGrid from '../components/Games/GameGrid';
 import '../App.css';
 
@@ -78,19 +77,18 @@ const Game = () => {
             />
             <div className="game-grid">
                 <GameRules />
-                <GameGrid grid={grid} handleCellClick={handleCellClick} cellSize={cellSize} />
-                <div className="game-controls">
-                    <GridSizeSelector 
-                        onSizeChange={(newSize) => {
-                            setSize(newSize);
-                        }}
-                    />
-                    <GameControls 
-                        isRunning={isRunning} 
-                        onPlay={handlePlay} 
-                        onClear={handleClear} 
-                    />
-                </div>
+
+                <GameGrid 
+                grid={grid} 
+                handleCellClick={handleCellClick} 
+                cellSize={cellSize} />
+
+                <GameControlPanel 
+                isRunning={isRunning} 
+                onPlay={handlePlay} 
+                onClear={handleClear} 
+                onSizeChange={(newSize) => setSize(newSize)}
+            />
             </div>
         </>
     );
