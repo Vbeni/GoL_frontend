@@ -36,7 +36,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home isLoggedIn={isLoggedIn} onLoginSuccess={handleSuccessfulLogin} onLogoutSuccess={handleSuccessfulLogout} />} />
           <Route path="/patternlist" element={<PatternList refreshKey={refreshKey} />} />
-          <Route path="/game" element={<Game />} />
+          <Route path="/game" element={<Game loggedInUser={loggedInUser} />} />
         </Routes>
         <Footer />
       </div>

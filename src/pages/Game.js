@@ -6,7 +6,7 @@ import GameStatus from '../components/Games/GameStatus';
 import GridSizeSelector from '../components/Games/GridSizeSelector';
 import '../App.css';
 
-const Game = () => {
+const Game = ({ loggedInUser }) => {
     // STATES
     const [size, setSize] = useState(25);
     const [grid, setGrid] = useState([]);
@@ -37,6 +37,7 @@ const Game = () => {
         setGrid(generateEmptyGrid());
     }, [size, generateEmptyGrid]);
 
+
     // HANDLERS
     const handleCellClick = useCallback((i, j) => {
         setGrid(grid => grid.map((row, x) => row.map((cell, y) => x === i && y === j ? !cell : cell)));
@@ -52,6 +53,7 @@ const Game = () => {
         setGenerationsCount(0);
     }, [generateEmptyGrid]);
 
+
     // GAME LOGIC
     useEffect(() => {
         if (!isRunning) return;
@@ -62,9 +64,10 @@ const Game = () => {
         return () => clearInterval(interval);
     }, [isRunning, computeNextGrid]);
 
+
     const livingCellsCount = grid.flat().filter(cell => cell).length;
     const cellSize = 500 / size;
-    
+
     // RENDER
     return (
         <>

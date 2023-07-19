@@ -11,7 +11,7 @@ const Header = ({ showCreate, setShowCreate, onNewPattern, loggedInUser }) => {
   return (
     <header className="header">
       <h1>
-        <Link to="/" className="home-link">Game Of Life</Link>
+        <Link to="/game" className="home-link">Game Of Life</Link>
       </h1>
       <nav className="nav">
       {loggedInUser && <span>Welcome, {loggedInUser}!</span>}
