@@ -3,97 +3,105 @@ import Cell from '../components/Cell';
 import GameControls from '../components/Games/GameControls';
 import GameRules from '../components/Games/GameRules';
 import GameStatus from '../components/Games/GameStatus';
+import GridSizeSelector from '../components/Games/GridSizeSelector';
 import '../App.css';
 
-//size prop for default grid size 
-const Game = ({ size = 25 }) => {
-//generates 2D empty grid filled with false values 
-  const generateEmptyGrid = useCallback(
-    () => Array.from({length: size}, () => Array(size).fill(false)), [size]
-  );
+const Game = () => {
+    // STATES
+    const [size, setSize] = useState(25);
+    const [grid, setGrid] = useState([]);
+    const [isRunning, setIsRunning] = useState(false);
+    const [generationsCount, setGenerationsCount] = useState(0);
 
-//Grid state and updater 
-  const [grid, setGrid] = useState(generateEmptyGrid);
-//State to track game status 
-  const [isRunning, setIsRunning] = useState(false);
-  const [generationsCount, setGenerationsCount] = useState(0);
-//Toggle cell state (alive or dead) on click 
-  const handleCellClick = useCallback((i, j) => {
-    setGrid(grid => grid.map((row, x) => row.map((cell, y) => x === i && y === j ? !cell : cell)));
-  }, []);
+    // GRID INITIALIZATION AND COMPUTATION
+    const generateEmptyGrid = useCallback(() => 
+        Array.from({length: size}, () => Array(size).fill(false)), [size]
+    );
 
-//Toggle game status
-  const handlePlay = useCallback(() => {
-    setIsRunning(isRunning => !isRunning);
-  }, []);
+    const computeNextGrid = useCallback((oldGrid) => {
+        return oldGrid.map((row, i) => row.map((cell, j) => {
+            const neighbors = [-1, 0, 1].flatMap(dx => 
+                [-1, 0, 1].map(dy => {
+                    if (dx === 0 && dy === 0) return 0;
+                    const x = i + dx;
+                    const y = j + dy;
+                    return x >= 0 && x < size && y >= 0 && y < size && oldGrid[x][y] ? 1 : 0;
+                })
+            ).reduce((a, b) => a + b);
 
-//resets game grid 
-  const handleClear = useCallback(() => {
-    setIsRunning(false);
-    setGrid(generateEmptyGrid());
-    setGenerationsCount(0);
-  }, [generateEmptyGrid]);
+            return neighbors === 3 || (cell && neighbors === 2);
+        }));
+    }, [size]);
 
-//function stored in memory not recreated every render, only recreated if size changes 
-  const computeNextGrid = useCallback((oldGrid) => {
-    //nested map function , outer map i, inner map j 
-    return oldGrid.map((row, i) => row.map((cell, j) => {
-        //nested flatmap uses array to get position of 8 neighbors by looping over dx & dy
-        //flatmap returns 2D array of neighbor states while map would return array of arrays 
-      const neighbors = [-1, 0, 1].flatMap(dx => [-1, 0, 1].map(dy => {
-        //combination (0,0) is not a neighbor but the current cell 
-        if (dx === 0 && dy === 0) return 0;
-        //coordinates of neighbors determined by adding relative changes to current cell (i,j)
-        const x = i + dx;
-        const y = j + dy;
-        //checks if within grid boundaries 
-        return x >= 0 && x < size && y >= 0 && y < size && oldGrid[x][y] ? 1 : 0;
-      })).reduce((a, b) => a + b);
-    //if cell has 3 neighbors then alive
-    //if cell is alive and has 2 neighbors then alive
-      return neighbors === 3 || (cell && neighbors === 2);
-    }));
-  }, [size]);
-//run game in intervals, update grid every second if game is running 
-  useEffect(() => {
-    if (!isRunning) return;
-    const interval = setInterval(() => {
-      setGrid(computeNextGrid);
-      setGenerationsCount(prevCount => prevCount + 1);
-    }, 700);
-    return () => clearInterval(interval);
-  }, [isRunning, computeNextGrid]);
+    useEffect(() => {
+        setGrid(generateEmptyGrid());
+    }, [size, generateEmptyGrid]);
 
-  const livingCellsCount = grid.flat().filter(cell => cell).length;
+    // HANDLERS
+    const handleCellClick = useCallback((i, j) => {
+        setGrid(grid => grid.map((row, x) => row.map((cell, y) => x === i && y === j ? !cell : cell)));
+    }, []);
 
-  return (
-    <>
-    <GameStatus 
-            isRunning={isRunning} 
-            livingCellsCount={livingCellsCount}
-            generationsCount={generationsCount}
-        />
-    <div className="game-grid">
-      <GameRules />
-      {grid.map((row, rowIndex) => (
-        <div key={rowIndex} className="row">
-          {row.map((cell, cellIndex) => (
-            <Cell 
-              key={cellIndex} 
-              isAlive={cell} 
-              onClick={() => handleCellClick(rowIndex, cellIndex)} 
+    const handlePlay = useCallback(() => {
+        setIsRunning(isRunning => !isRunning);
+    }, []);
+
+    const handleClear = useCallback(() => {
+        setIsRunning(false);
+        setGrid(generateEmptyGrid());
+        setGenerationsCount(0);
+    }, [generateEmptyGrid]);
+
+    // GAME LOGIC
+    useEffect(() => {
+        if (!isRunning) return;
+        const interval = setInterval(() => {
+            setGrid(computeNextGrid);
+            setGenerationsCount(prevCount => prevCount + 1);
+        }, 700);
+        return () => clearInterval(interval);
+    }, [isRunning, computeNextGrid]);
+
+    const livingCellsCount = grid.flat().filter(cell => cell).length;
+    const cellSize = 500 / size;
+    
+    // RENDER
+    return (
+        <>
+            <GameStatus 
+                isRunning={isRunning} 
+                livingCellsCount={livingCellsCount}
+                generationsCount={generationsCount}
             />
-          ))}
-        </div>
-      ))}
-      <GameControls 
-        isRunning={isRunning} 
-        onPlay={handlePlay} 
-        onClear={handleClear} 
-      />
-    </div>
-    </>
-  );
+            <div className="game-grid">
+                <GameRules />
+                {grid.map((row, rowIndex) => (
+                    <div key={rowIndex} className="row">
+                        {row.map((cell, cellIndex) => (
+                            <Cell 
+                                key={cellIndex} 
+                                isAlive={cell} 
+                                onClick={() => handleCellClick(rowIndex, cellIndex)} 
+                                cellSize={cellSize}
+                            />
+                        ))}
+                    </div>
+                ))}
+                <div className="game-controls">
+                    <GridSizeSelector 
+                        onSizeChange={(newSize) => {
+                            setSize(newSize);
+                        }}
+                    />
+                    <GameControls 
+                        isRunning={isRunning} 
+                        onPlay={handlePlay} 
+                        onClear={handleClear} 
+                    />
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default Game;

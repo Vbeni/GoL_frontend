@@ -1,0 +1,11 @@
+.grid-size-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grid-size-selector label, 
+.grid-size-selector select,
+.grid-size-selector button {
+    margin: 5px;
+}
