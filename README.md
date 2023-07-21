@@ -1,71 +1,70 @@
-# Getting Started with Create React App
+# Game of Life
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Link to live site: [Game of Life Live Site]([https://visionary-fairy-867727.netlify.app/]) 
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Game of Life is a web application based on Conway's Game of Life, a cellular automaton simulation. The game consists of a grid of cells, and each cell can be in one of two states: alive or dead. The game evolves through generations based on a set of rules, creating mesmerizing patterns and behaviors.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Django: Web framework used for the backend development.
+- React: JavaScript library used for building the frontend user interface.
+- PostgreSQL: Database management system used to store game state data.
+- Django REST framework: Toolkit used for building RESTful APIs with Django.
+- Axios: JavaScript library used for making HTTP requests from the frontend to the backend.
+- HTML/CSS: Used for styling and structuring the user interface.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+To run the Game of Life app locally, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository from the backend link and frontend link below.
+2. Frontend:https://github.com/Vbeni/GoL_frontend/
+   Backend:https://github.com/Vbeni/game_of_life
+3. Install backend dependencies using the following command:
+   ```
+   pip install -r requirements.txt
+   ```
+4. Create and apply database migrations:
+   ```
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+5. Start the Django development server:
+   ```
+   python manage.py runserver
+   ```
+6. Navigate to the frontend directory and install frontend dependencies:
+   ```
+   cd frontend
+   npm install
+   ```
+7. Start the React development server:
+   ```
+   npm start
+   ```
+8. Access the app locally at `http://localhost:3000/`.
 
-### `npm run build`
+## User Stories
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- As a user, I want to experience the patterns of Conway's Game of Life.
+- As a user, I want to interact with the grid and see how the cells evolve with each generation.
+- As a user, I want to start and stop the simulation to observe specific patterns.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Wireframes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Link to wireframes: [Game of Life Wireframes]([(https://www.figma.com/file/4okbdE4l3w3tBzonsQfSo8/Untitled?type=design&node-id=0-1&mode=design&t=DqYaDPHGmeN97qRF-0)) 
 
-### `npm run eject`
+## Entity Relationship Diagrams
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Link to ER Diagrams: [Game of Life ER Diagrams]([(https://trello.com/b/vw9yXnPm/gameoflife)) 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Unsolved Problems and Future Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Implement responsive design to support different screen sizes and devices.
+- Add user authentication and the ability to save and load custom patterns.
+- Implement randomized seeding of starting cells.
+- Implement different rule sets and allow users to customize the rules.
+- Enable multiplayer mode with real-time collaboration on the same grid.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# GoL_frontend
