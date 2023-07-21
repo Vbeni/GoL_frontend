@@ -1,6 +1,6 @@
 # Game of Life
 
-Link to live site: [Game of Life Live Site]([https://visionary-fairy-867727.netlify.app/]) 
+Link to live site: [Game of Life Live Site](https://visionary-fairy-867727.netlify.app/) 
 
 ## Description
 
@@ -54,11 +54,11 @@ To run the Game of Life app locally, follow these steps:
 
 ## Wireframes
 
-Link to wireframes: [Game of Life Wireframes]([(https://www.figma.com/file/4okbdE4l3w3tBzonsQfSo8/Untitled?type=design&node-id=0-1&mode=design&t=DqYaDPHGmeN97qRF-0)) 
+Link to wireframes: [Game of Life Wireframes](https://www.figma.com/file/4okbdE4l3w3tBzonsQfSo8/Untitled?type=design&node-id=0-1&mode=design&t=DqYaDPHGmeN97qRF-0) 
 
 ## Entity Relationship Diagrams
 
-Link to ER Diagrams: [Game of Life ER Diagrams]([(https://trello.com/b/vw9yXnPm/gameoflife)) 
+Link to ER Diagrams: [Game of Life ER Diagrams](https://trello.com/b/vw9yXnPm/gameoflife) 
 
 ## Unsolved Problems and Future Features
 
