@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const RandomSeeder = ({ gridSize, onRandomSeed }) => {
   const [numCellsToSeed, setNumCellsToSeed] = useState(10); // Default number of cells to seed
+
+  useEffect(() => {
+
+    setNumCellsToSeed(10);
+  }, [gridSize]);
 
   const handleNumCellsChange = (event) => {
     const value = event.target.value;

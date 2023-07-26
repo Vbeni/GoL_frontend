@@ -17,6 +17,7 @@ const Game = () => {
     const [isRunning, setIsRunning] = useState(false);
     const [generationsCount, setGenerationsCount] = useState(0);
     const [intervalSpeed, setIntervalSpeed] = useState(700);
+    
 
     // GRID INITIALIZATION AND COMPUTATION:
     //generates empty(false) grid based on current size. Called when game is initialized or cleared 
