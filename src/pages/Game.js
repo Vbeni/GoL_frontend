@@ -3,6 +3,7 @@ import GameControlPanel from '../components/Games/GameControlPanel';
 import GameRules from '../components/Games/GameRules';
 import GameStatus from '../components/Games/GameStatus';
 import GameGrid from '../components/Games/GameGrid';
+
 import '../App.css';
 
 const Game = () => {
@@ -15,6 +16,7 @@ const Game = () => {
     const [grid, setGrid] = useState([]);
     const [isRunning, setIsRunning] = useState(false);
     const [generationsCount, setGenerationsCount] = useState(0);
+    const [intervalSpeed, setIntervalSpeed] = useState(700);
 
     // GRID INITIALIZATION AND COMPUTATION:
     //generates empty(false) grid based on current size. Called when game is initialized or cleared 
@@ -85,9 +87,9 @@ const Game = () => {
         const interval = setInterval(() => {
             setGrid(computeNextGrid);
             setGenerationsCount(prevCount => prevCount + 1);
-        }, 700);
+        }, intervalSpeed);
         return () => clearInterval(interval);
-    }, [isRunning, computeNextGrid]);
+    }, [isRunning, intervalSpeed, computeNextGrid]);
 
     //number of living cells in current grid 
     const livingCellsCount = grid.flat().filter(cell => cell).length;
@@ -115,6 +117,8 @@ const Game = () => {
                 onPlay={handlePlay} 
                 onClear={handleClear} 
                 onSizeChange={(newSize) => setSize(newSize)}
+                intervalSpeed={intervalSpeed} 
+                onIntervalSpeedChange={(newSpeed) => setIntervalSpeed(newSpeed)} 
             />
             </div>
         </>
