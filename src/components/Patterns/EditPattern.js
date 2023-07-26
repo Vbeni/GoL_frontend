@@ -33,7 +33,7 @@ const EditPattern = ({ pattern, onPatternUpdate }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Data from response:', data); // Debugging line
+      
 
         //updates data on successful submit 
         onPatternUpdate(data);

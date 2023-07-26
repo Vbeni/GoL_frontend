@@ -3,7 +3,7 @@ import GameControlPanel from '../components/Games/GameControlPanel';
 import GameRules from '../components/Games/GameRules';
 import GameStatus from '../components/Games/GameStatus';
 import GameGrid from '../components/Games/GameGrid';
-
+import RandomSeeder from '../components/Games/RandomSeeder';
 import '../App.css';
 
 const Game = () => {
@@ -79,6 +79,23 @@ const Game = () => {
         setGenerationsCount(0);
     }, [generateEmptyGrid]);
 
+    const randomSeedCells = (numCells) => {
+        const newGrid = grid.map((row) => row.map(() => false)); // Reset grid to all false
+        let remainingCells = numCells;
+    
+        while (remainingCells > 0) {
+          const x = Math.floor(Math.random() * size);
+          const y = Math.floor(Math.random() * size);
+    
+          if (!newGrid[x][y]) {
+            newGrid[x][y] = true;
+            remainingCells--;
+          }
+        }
+    
+        setGrid(newGrid);
+      };
+
 
     // GAME LOGIC
     //computes next grid state & updates generations count every 700ms when game is running 
@@ -106,6 +123,7 @@ const Game = () => {
             />
             <div className="game-grid">
                 <GameRules />
+                <RandomSeeder gridSize={size} onRandomSeed={randomSeedCells} />
 
                 <GameGrid 
                 grid={grid} 
