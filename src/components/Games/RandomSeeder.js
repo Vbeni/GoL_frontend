@@ -10,7 +10,7 @@ const RandomSeeder = ({ gridSize, onRandomSeed }) => {
 
   const handleNumCellsChange = (event) => {
     const value = event.target.value;
-    setNumCellsToSeed(Math.min(Math.max(parseInt(value), 0), gridSize * gridSize)); // Ensure the value is within the grid size range
+    setNumCellsToSeed(Math.min(Math.max(parseInt(value), 0), gridSize * gridSize)); 
   };
 
   const handleSeedCells = () => {
