@@ -4,6 +4,7 @@ import GameRules from '../components/Games/GameRules';
 import GameStatus from '../components/Games/GameStatus';
 import GameGrid from '../components/Games/GameGrid';
 import RandomSeeder from '../components/Games/RandomSeeder';
+import PatternLibrary from '../components/Games/PatternLibrary';
 import '../App.css';
 
 const Game = () => {
@@ -97,6 +98,21 @@ const Game = () => {
         setGrid(newGrid);
       };
 
+    const handleLoadPattern = (pattern) => {
+        const xOffset = Math.floor((size - pattern.size) / 2);
+        const yOffset = Math.floor((size - pattern.size) / 2);
+    
+        const newGrid = generateEmptyGrid();
+        for (let i = 0; i < pattern.size; i++) {
+          for (let j = 0; j < pattern.size; j++) {
+            newGrid[i + xOffset][j + yOffset] = pattern.cells[i][j];
+          }
+        }
+    
+        setGrid(newGrid);
+      };
+    
+
 
     // GAME LOGIC
     //computes next grid state & updates generations count every 700ms when game is running 
@@ -112,7 +128,8 @@ const Game = () => {
     //number of living cells in current grid 
     const livingCellsCount = grid.flat().filter(cell => cell).length;
     //size of each cell in grid
-    const cellSize = 500 / size;
+    const cellSize = window.innerWidth > 500 ? 500 / size : window.innerWidth / size;
+
 
     // RENDER
     return (
@@ -124,21 +141,27 @@ const Game = () => {
             />
             <div className="game-grid">
                 <GameRules />
-                <RandomSeeder gridSize={size} onRandomSeed={randomSeedCells} />
+                
 
-                <GameGrid 
-                grid={grid} 
-                handleCellClick={handleCellClick} 
-                cellSize={cellSize} />
-
+                <div className="game-main-content">
+                    <RandomSeeder gridSize={size} onRandomSeed={randomSeedCells} />
+                    <GameGrid 
+                        grid={grid} 
+                        handleCellClick={handleCellClick} 
+                        cellSize={cellSize} 
+                    />
+                </div>
+    
+                <PatternLibrary onLoadPattern={handleLoadPattern} />
+                
                 <GameControlPanel 
-                isRunning={isRunning} 
-                onPlay={handlePlay} 
-                onClear={handleClear} 
-                onSizeChange={(newSize) => setSize(newSize)}
-                intervalSpeed={intervalSpeed} 
-                onIntervalSpeedChange={(newSpeed) => setIntervalSpeed(newSpeed)} 
-            />
+                    isRunning={isRunning} 
+                    onPlay={handlePlay} 
+                    onClear={handleClear} 
+                    onSizeChange={(newSize) => setSize(newSize)}
+                    intervalSpeed={intervalSpeed} 
+                    onIntervalSpeedChange={(newSpeed) => setIntervalSpeed(newSpeed)} 
+                />
             </div>
         </>
     );

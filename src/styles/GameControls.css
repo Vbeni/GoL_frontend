@@ -1,7 +1,7 @@
 .button-container {
     display: flex;
     justify-content: space-around;
-    margin: 20px;
+    margin: 100px;
     gap: 15px;
   }
   

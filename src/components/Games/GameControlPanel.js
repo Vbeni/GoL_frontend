@@ -2,10 +2,12 @@ import React from 'react';
 import GridSizeSelector from './GridSizeSelector';
 import GameControls from './GameControls';
 import InputSlider from 'react-input-slider';
+import '../../styles/GameControlPanel.css'
 
 const GameControlPanel = ({ isRunning, onPlay, onClear, onSizeChange, intervalSpeed, onIntervalSpeedChange }) => {
     return (
         <div className="game-controls">
+          
             <GridSizeSelector onSizeChange={onSizeChange} />
             <GameControls isRunning={isRunning} onPlay={onPlay} onClear={onClear} />
             <div className="slider-container">

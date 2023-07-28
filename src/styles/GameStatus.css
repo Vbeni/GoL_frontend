@@ -6,9 +6,10 @@
     padding: 10px;
     border-radius: 5px;
     width: 100%;
-    max-width: 500px;
-    margin: 0 auto 20px; 
+    max-width: 700px;
+    margin: 0 auto -20px; 
     color: #F0F0F0;
+    margin-top: 10px;
 }
 
 .game-status span {

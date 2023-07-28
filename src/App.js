@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="App">
+      <div className="app">
         <Header showCreate={showCreate} setShowCreate={setShowCreate} onNewPattern={handleNewPattern} loggedInUser={loggedInUser}/>
         <Routes>
           <Route path="/home" element={<Home isLoggedIn={isLoggedIn} onLoginSuccess={handleSuccessfulLogin} onLogoutSuccess={handleSuccessfulLogout} />} />

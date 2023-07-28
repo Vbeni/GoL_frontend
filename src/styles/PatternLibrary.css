@@ -1,0 +1,35 @@
+.pattern-dropdown {
+    background-color: #404040;
+    border: 2px solid #606060;        /* subtle border to give depth */
+    border-radius: 5px;
+    padding: 10px 15px;               /* added right padding for arrow aesthetics */
+    color: #F0F0F0;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out; /* smooth transition for hover effects */
+    outline: none;                    /* remove the browser default outline */
+    appearance: none;                 /* for some browsers to remove default styling */
+    -webkit-appearance: none;         /* for Safari */
+    -moz-appearance: none;            /* for Firefox */
+    font-size: 16px;                  /* to keep font consistent across browsers */
+}
+
+.pattern-dropdown:hover {
+    background-color: #505050;        
+    border-color: #707070;           
+}
+
+.pattern-dropdown:focus {
+    box-shadow: 0 0 5px #60b0e0;     
+}
+
+.pattern-dropdown option {
+    background-color: #404040;
+    color: #F0F0F0; 
+}
+
+.pattern-dropdown option:hover {
+    background-color: #505050;       
+}

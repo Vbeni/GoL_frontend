@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import CreatePattern from '../components/Patterns/CreatePattern';
-
+import '../../src/styles/Header.css'
 //Header component with 4 props:
 // - showCreate: A boolean to decide whether the CreatePattern component should be shown or not.
 // - setShowCreate: A function to toggle the visibility of CreatePattern.
