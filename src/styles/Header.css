@@ -1,18 +1,35 @@
 .header {
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0px;
+    padding: 10px;
     background-color: #404040;
     border-radius: 0px;
-    height: 45px;
+    height: auto; 
+}
+
+@media (min-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0px;
+        height: 45px; 
+    }
 }
 
 .nav, .form-container {
     display: flex;
+    flex-direction: column;
     gap: 20px;
     align-items: center;
+}
+
+@media (min-width: 768px) {
+    .nav, .form-container {
+        flex-direction: row;
+    }
 }
 
 .home-link, .nav-link {

@@ -140,7 +140,7 @@ const Game = () => {
                 generationsCount={generationsCount}
             />
             <div className="game-grid">
-                <GameRules />
+                {/* <GameRules /> */}
                 
 
                 <div className="game-main-content">
