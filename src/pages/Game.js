@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import GameControlPanel from '../components/Games/GameControlPanel';
-import GameRules from '../components/Games/GameRules';
 import GameStatus from '../components/Games/GameStatus';
 import GameGrid from '../components/Games/GameGrid';
 import RandomSeeder from '../components/Games/RandomSeeder';
@@ -140,7 +139,6 @@ const Game = () => {
                 generationsCount={generationsCount}
             />
             <div className="game-grid">
-                {/* <GameRules /> */}
                 
 
                 <div className="game-main-content">
