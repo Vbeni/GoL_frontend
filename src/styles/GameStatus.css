@@ -10,8 +10,24 @@
     margin: 0 auto -20px; 
     color: #F0F0F0;
     margin-top: 10px;
+    flex-direction: column; /* stack content vertically by default */
+    text-align: center; /* center the text */
 }
 
 .game-status span {
-    margin: 0 10px;
+    margin: 5px 0; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    max-width: 90%; 
+}
+
+@media (min-width: 768px) {
+    .game-status {
+        flex-direction: row; 
+    }
+    
+    .game-status span {
+        margin: 0 10px; 
+    }
 }
